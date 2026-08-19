@@ -1,0 +1,29 @@
+[
+  {
+    "name": "torch_paired_protect_rotate_local_top2_max",
+    "descriptor_mode": "paired",
+    "target_mode": "oracle",
+    "top_k": 2,
+    "fusion_mode": "max",
+    "protected_roles": [
+      "rotate",
+      "local_attack"
+    ],
+    "confidence_gap": 0.18,
+    "entropy_threshold": 0.76,
+    "epochs": 900,
+    "lr": 0.002,
+    "weight_decay": 0.0001,
+    "hidden_dims": [
+      128,
+      64
+    ],
+    "dropout": 0.1,
+    "temperature": 0.8,
+    "lambda_route": 1.0,
+    "lambda_pos": 1.5,
+    "lambda_entropy": 0.04,
+    "lambda_balance": 0.08,
+    "pos_target": 0.92
+  }
+]

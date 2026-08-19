@@ -1,0 +1,231 @@
+{
+  "dataset_root": "C:/rb_afl_research/v10_runs/20260503_011945/data_topoboundary_v14",
+  "output_root": "C:/rb_afl_research/v10_runs/20260503_011945/suite_output_topoboundary_v14_formal_test",
+  "output_xlsx": "C:/rb_afl_research/v15_runs/v15_unique_topology_fix_formal_test.xlsx",
+  "skip_train_if_best_exists": false,
+  "auto_visual_report": true,
+  "timestamp": "v17_5_reduced_candidate_pool",
+  "common_train": {
+    "channels": [
+      "occ",
+      "dist",
+      "orient",
+      "density"
+    ],
+    "positive_mode": "shp_aug",
+    "grid_size": 256,
+    "feat_dim": 256,
+    "branch_dim": 128,
+    "disc_hidden_dim": 128,
+    "disc_depth": 2,
+    "disc_dropout": 0.1,
+    "epochs": 60,
+    "batch_size": 1,
+    "num_workers": 0,
+    "lr_g": 0.0003,
+    "lr_d": 0.0003,
+    "weight_decay": 0.0002,
+    "lambda_cons": 5.0,
+    "gamma_triplet": 8.0,
+    "triplet_margin": 1.0,
+    "lambda_bit": 0.02,
+    "lambda_supcon": 0.0,
+    "supcon_temperature": 0.2,
+    "val_ratio": 0.0,
+    "seed": 20260318,
+    "device": "auto",
+    "formal_split_note": "train uses train_dataset_root; validation uses val_dataset_root; held-out test is only used after training by evaluators.",
+    "early_stop_patience": 12,
+    "early_stop_min_epochs": 10,
+    "enable_hard_mining": false
+  },
+  "common_eval": {
+    "bit_length": 256,
+    "threshold_mode": "mean",
+    "copyright_seed": 20260318,
+    "device": "auto"
+  },
+  "models": [
+    {
+      "name": "cnn_fc",
+      "train": {
+        "generator": "cnn_baseline",
+        "discriminator": "fc",
+        "batch_size": 4,
+        "lr_g": 0.0005,
+        "lr_d": 0.0005,
+        "lambda_cons": 5.0,
+        "gamma_triplet": 6.0,
+        "lambda_bit": 0.01
+      }
+    },
+    {
+      "name": "cnn_deepD_supcon",
+      "train": {
+        "generator": "cnn_baseline",
+        "discriminator": "deep_fc",
+        "disc_depth": 4,
+        "batch_size": 4,
+        "lr_g": 0.0005,
+        "lr_d": 0.0005,
+        "lambda_cons": 5.0,
+        "gamma_triplet": 6.0,
+        "lambda_bit": 0.01,
+        "lambda_supcon": 0.2
+      }
+    },
+    {
+      "name": "resnet_se_spectralD",
+      "train": {
+        "generator": "resnet_se_grid",
+        "discriminator": "spectral_fc",
+        "base_channels": 24,
+        "batch_size": 2,
+        "lr_g": 0.0005,
+        "lr_d": 0.0005,
+        "lambda_cons": 5.0,
+        "gamma_triplet": 6.0,
+        "lambda_bit": 0.01
+      }
+    },
+    {
+      "name": "proxyanchor_gridcnn_unique_v15",
+      "train": {
+        "generator": "cnn_baseline",
+        "discriminator": "pair_spectral_fc",
+        "batch_size": 4,
+        "base_channels": 32,
+        "lr_g": 0.00035,
+        "lr_d": 0.00035,
+        "lambda_cons": 4.0,
+        "gamma_triplet": 7.0,
+        "triplet_margin": 1.0,
+        "lambda_bit": 0.01,
+        "enable_hard_mining": true,
+        "hard_mining_start_epoch": 1,
+        "hard_mining_interval": 1,
+        "hard_mining_top_k": 16,
+        "hard_negative_prob": 0.9,
+        "hard_positive_prob": 0.7,
+        "lambda_hard_neg": 7.0,
+        "lambda_batch_unique": 3.0,
+        "hard_negative_margin": 0.42,
+        "batch_unique_margin": 0.38,
+        "lambda_proxy_anchor": 1.2,
+        "proxy_anchor_margin": 0.1,
+        "proxy_anchor_alpha": 32.0,
+        "lambda_proxy_pair_hard_neg": 1.5,
+        "proxy_pair_hard_neg_margin": 0.35,
+        "early_stop_patience": 15,
+        "early_stop_min_epochs": 15
+      }
+    },
+    {
+      "name": "geogrid_graph",
+      "train": {
+        "generator": "geogrid_graph",
+        "discriminator": "fc",
+        "batch_size": 1,
+        "lr_g": 0.0003,
+        "lr_d": 0.0003
+      }
+    },
+    {
+      "name": "geotoken_base_unique",
+      "train": {
+        "generator": "geotoken_only",
+        "discriminator": "fc",
+        "batch_size": 1,
+        "lr_g": 0.0002,
+        "lr_d": 0.0002,
+        "weight_decay": 0.0002,
+        "lambda_cons": 5.0,
+        "gamma_triplet": 8.0,
+        "triplet_margin": 1.0,
+        "lambda_bit": 0.02,
+        "lambda_supcon": 0.0
+      }
+    },
+    {
+      "name": "geotoken_only",
+      "train": {
+        "generator": "geotoken_only",
+        "discriminator": "fc",
+        "batch_size": 1,
+        "lr_g": 0.0003,
+        "lr_d": 0.0003
+      }
+    },
+    {
+      "name": "geovecformer_robust_unique",
+      "train": {
+        "generator": "geovecformer_zw",
+        "discriminator": "spectral_fc",
+        "batch_size": 1,
+        "lr_g": 0.0002,
+        "lr_d": 0.0002,
+        "weight_decay": 0.0002,
+        "lambda_cons": 7.0,
+        "gamma_triplet": 8.0,
+        "triplet_margin": 1.0,
+        "lambda_bit": 0.02,
+        "lambda_supcon": 0.1
+      }
+    },
+    {
+      "name": "geovecformer_deepD_supcon",
+      "train": {
+        "generator": "geovecformer_zw",
+        "discriminator": "deep_fc",
+        "disc_depth": 4,
+        "batch_size": 1,
+        "lr_g": 0.0002,
+        "lr_d": 0.0002,
+        "weight_decay": 0.0002,
+        "lambda_cons": 8.0,
+        "gamma_triplet": 5.0,
+        "triplet_margin": 0.8,
+        "lambda_bit": 0.02,
+        "lambda_supcon": 0.2
+      }
+    },
+    {
+      "name": "component_relation_transformer_topology_v15",
+      "train": {
+        "generator": "component_relation_transformer",
+        "discriminator": "pair_spectral_fc",
+        "batch_size": 1,
+        "branch_dim": 160,
+        "lr_g": 0.00025,
+        "lr_d": 0.00025,
+        "weight_decay": 0.0002,
+        "lambda_cons": 8.0,
+        "gamma_triplet": 6.0,
+        "triplet_margin": 0.8,
+        "lambda_bit": 0.02,
+        "lambda_supcon": 0.1,
+        "positive_attack_keywords": [
+          "topology",
+          "component",
+          "delete",
+          "clean"
+        ],
+        "enable_hard_mining": true,
+        "hard_mining_start_epoch": 1,
+        "hard_mining_interval": 1,
+        "hard_positive_top_k": 8,
+        "hard_positive_prob": 0.85,
+        "lambda_hard_pos": 1.2,
+        "hard_positive_target": 0.92,
+        "lambda_hard_neg": 3.0,
+        "hard_negative_margin": 0.5,
+        "early_stop_patience": 15,
+        "early_stop_min_epochs": 15
+      }
+    }
+  ],
+  "format_note": "V15: V14 formal split plus unique ArcFace/ProxyAnchor specialists, topology relation specialists, and single-model ablation reporting.",
+  "train_dataset_root": "C:/rb_afl_research/v10_runs/20260503_011945/data_topoboundary_v14_splits/train",
+  "val_dataset_root": "C:/rb_afl_research/v10_runs/20260503_011945/data_topoboundary_v14_splits/val",
+  "eval_dataset_root": "C:/rb_afl_research/v10_runs/20260503_011945/data_topoboundary_v14_splits/test"
+}

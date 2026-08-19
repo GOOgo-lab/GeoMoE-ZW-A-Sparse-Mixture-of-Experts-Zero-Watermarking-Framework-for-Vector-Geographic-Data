@@ -1,0 +1,49 @@
+{
+  "grid_size": 256,
+  "pad_ratio": 0.03,
+  "max_tokens": 512,
+  "max_graph_nodes": 256,
+  "vector_format": "gpkg",
+  "mixed_attacks": [
+    {"id": "M1", "name": "M1_simplify_boundary_jitter", "chain": [
+      {"engine": "internal", "attack_type": "simplify", "value": 0.002, "params": {"value_mode": "span_ratio", "preserve_topology": true}},
+      {"engine": "internal", "attack_type": "boundary_jitter", "value": 0.0005, "params": {"value_mode": "span_ratio"}}
+    ]},
+    {"id": "M2", "name": "M2_quantize_boundary_jitter", "chain": [
+      {"engine": "internal", "attack_type": "quantize", "value": 0.001, "params": {"value_mode": "span_ratio"}},
+      {"engine": "internal", "attack_type": "boundary_jitter", "value": 0.0005, "params": {"value_mode": "span_ratio"}}
+    ]},
+    {"id": "M3", "name": "M3_topology_delete_boundary_jitter", "chain": [
+      {"engine": "internal", "attack_type": "topology_delete_features", "value": 0.05, "params": {}},
+      {"engine": "internal", "attack_type": "boundary_jitter", "value": 0.0005, "params": {"value_mode": "span_ratio"}}
+    ]},
+    {"id": "M4", "name": "M4_rotate30_simplify", "chain": [
+      {"engine": "internal", "attack_type": "rotate", "value": 30.0, "params": {}},
+      {"engine": "internal", "attack_type": "simplify", "value": 0.002, "params": {"value_mode": "span_ratio", "preserve_topology": true}}
+    ]},
+    {"id": "M5", "name": "M5_component_drop_boundary_smooth", "chain": [
+      {"engine": "internal", "attack_type": "topology_component_drop", "value": 0.10, "params": {}},
+      {"engine": "internal", "attack_type": "boundary_smooth", "value": 0.0005, "params": {"value_mode": "span_ratio"}}
+    ]},
+    {"id": "M6", "name": "M6_scale105_quantize", "chain": [
+      {"engine": "internal", "attack_type": "uniform_scale", "value": 1.05, "params": {}},
+      {"engine": "internal", "attack_type": "quantize", "value": 0.001, "params": {"value_mode": "span_ratio"}}
+    ]},
+    {"id": "M7", "name": "M7_topology_delete_jitter", "chain": [
+      {"engine": "internal", "attack_type": "topology_delete_features", "value": 0.05, "params": {}},
+      {"engine": "internal", "attack_type": "jitter", "value": 0.001, "params": {"value_mode": "span_ratio"}}
+    ]},
+    {"id": "M8", "name": "M8_scale095_jitter", "chain": [
+      {"engine": "internal", "attack_type": "uniform_scale", "value": 0.95, "params": {}},
+      {"engine": "internal", "attack_type": "jitter", "value": 0.001, "params": {"value_mode": "span_ratio"}}
+    ]},
+    {"id": "M9", "name": "M9_rotate30_quantize", "chain": [
+      {"engine": "internal", "attack_type": "rotate", "value": 30.0, "params": {}},
+      {"engine": "internal", "attack_type": "quantize", "value": 0.001, "params": {"value_mode": "span_ratio"}}
+    ]},
+    {"id": "M10", "name": "M10_rotate30_jitter", "chain": [
+      {"engine": "internal", "attack_type": "rotate", "value": 30.0, "params": {}},
+      {"engine": "internal", "attack_type": "jitter", "value": 0.001, "params": {"value_mode": "span_ratio"}}
+    ]}
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "paper_name": "GeoMoE-ZW",
+  "seed": 20260318,
+  "data": {
+    "grid_size": 256,
+    "grid_channels": ["occupancy", "distance", "orientation", "density"],
+    "object_feature_dim": 24,
+    "split": [0.7, 0.2, 0.1]
+  },
+  "experts": {
+    "candidate_config": "configs/model_suite_reduced_candidate_pool_v17_5.json",
+    "candidate_count": 10,
+    "embedding_dim": 256,
+    "epochs": 800,
+    "optimizer": "AdamW"
+  },
+  "registration": {
+    "attack_directions": 12,
+    "worst_direction_nc_threshold": 0.8,
+    "minimum_experts": 3,
+    "bit_length": 256
+  },
+  "router": {
+    "descriptor_dim": 128,
+    "hidden_dims": [128, 64],
+    "dropout": 0.1,
+    "epochs": 800,
+    "optimizer": "AdamW",
+    "learning_rate": 0.002,
+    "weight_decay": 0.0001,
+    "oracle_margin": 0.02,
+    "top_k": 2,
+    "fusion": "max_nc"
+  },
+  "decision": {
+    "metric": "NC",
+    "threshold": 0.8,
+    "report": ["mean_nc", "min_nc", "nc_below_0.8", "rpr_at_0.8", "fmr_at_0.8"]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "grid_size": 256,
+  "pad_ratio": 0.03,
+  "max_tokens": 512,
+  "max_graph_nodes": 256,
+  "repair_geometry": true,
+  "copy_source_shp": false,
+  "save_vector_copy": true,
+  "vector_format": "gpkg",
+  "mapshaper_bin": "mapshaper",
+  "seed": 20260318,
+  "attacks": [
+    {"id": "S01", "engine": "internal", "attack_type": "rotate", "value": 30.0, "params": {}},
+    {"id": "S02", "engine": "internal", "attack_type": "uniform_scale", "value": 1.05, "params": {}},
+    {"id": "S03", "engine": "internal", "attack_type": "translate", "value": 0.01, "params": {"value_mode": "span_ratio"}},
+    {"id": "S04", "engine": "internal", "attack_type": "simplify", "value": 0.002, "params": {"value_mode": "span_ratio", "preserve_topology": true}},
+    {"id": "S05", "engine": "internal", "attack_type": "quantize", "value": 0.001, "params": {"value_mode": "span_ratio"}},
+    {"id": "S06", "engine": "internal", "attack_type": "jitter", "value": 0.001, "params": {"value_mode": "span_ratio"}},
+    {"id": "S07", "engine": "internal", "attack_type": "topology_delete_features", "value": 0.05, "params": {}},
+    {"id": "S08", "engine": "internal", "attack_type": "topology_component_drop", "value": 0.10, "params": {}},
+    {"id": "S09", "engine": "internal", "attack_type": "topology_clean", "value": 0.0005, "params": {"value_mode": "span_ratio"}},
+    {"id": "S10", "engine": "internal", "attack_type": "boundary_jitter", "value": 0.0005, "params": {"value_mode": "span_ratio"}},
+    {"id": "S11", "engine": "internal", "attack_type": "boundary_simplify", "value": 0.002, "params": {"value_mode": "span_ratio", "preserve_topology": true}},
+    {"id": "S12", "engine": "internal", "attack_type": "boundary_smooth", "value": 0.0005, "params": {"value_mode": "span_ratio"}}
+  ]
+}
