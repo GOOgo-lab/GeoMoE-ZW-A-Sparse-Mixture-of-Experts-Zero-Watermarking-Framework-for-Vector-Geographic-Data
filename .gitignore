@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Data, models and experiment outputs
+data/
+datasets/
+checkpoints/
+runs/
+outputs/
+results/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.npy
+*.npz
+*.shp
+*.shx
+*.dbf
+*.prj
+*.sbn
+*.sbx
+*.gpkg
+*.tif
+*.tiff
+*.xlsx
+*.csv
+*.log
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+configs/local*.json

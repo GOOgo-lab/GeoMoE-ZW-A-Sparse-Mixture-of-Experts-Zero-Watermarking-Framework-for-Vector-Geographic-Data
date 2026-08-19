@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying manuscript."
+title: "GeoMoE-ZW: An Adaptive Sparse Mixture-of-Experts Zero-Watermarking Method for Robust Authentication of Vector Geographic Data"
+type: software
+version: 0.1.0
+date-released: 2026-08-19
+authors:
+  - family-names: Wang
+    given-names: Lanqing
+    email: 3540897163@qq.com
+license: MIT
+repository-code: "https://github.com/YOUR_GITHUB_USERNAME/GeoMoE-ZW"
