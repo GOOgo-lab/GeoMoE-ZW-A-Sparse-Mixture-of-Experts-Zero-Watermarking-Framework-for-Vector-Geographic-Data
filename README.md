@@ -1,6 +1,6 @@
 # GeoMoE-ZW
 
-[![Quick check](https://github.com/YOUR_GITHUB_USERNAME/GeoMoE-ZW/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_GITHUB_USERNAME/GeoMoE-ZW/actions/workflows/ci.yml)
+[![Quick check](https://github.com/GOOgo-lab/GeoMoE-ZW-A-Sparse-Mixture-of-Experts-Zero-Watermarking-Framework-for-Vector-Geographic-Data/actions/workflows/ci.yml/badge.svg)](https://github.com/GOOgo-lab/GeoMoE-ZW-A-Sparse-Mixture-of-Experts-Zero-Watermarking-Framework-for-Vector-Geographic-Data/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Official source-code repository for the manuscript:
